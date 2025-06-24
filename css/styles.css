@@ -1,19 +1,59 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background-color: #202020;
+@import url("https://fonts.cdnfonts.com/css/junicode");
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
+
+:root {
+    --black: #202020;
+    --white: #fefefe;
+    --semi-white: #f0f0f0;
 }
 
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--black);
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+.hero h1 {
+    font-family: "Junicode", sans-serif;
+    font-weight: 600;
+    font-size: 10rem;
+    color: var(--white);
+    
+    text-align: center;
+
+    margin-bottom: 0;
+}
+
+.hero p {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--semi-white);
+    
+    margin-top: -35px;
+    margin-bottom: 100px;
+}
 
 .card-deck {
     position: relative;
     width: 100%;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0;
+
+    margin-bottom: 100px;
 }
 
 .card {
@@ -44,6 +84,7 @@ html, body {
     height: 100%;
     object-fit: contain;
     box-shadow: 0 0 20px;
+    border-radius: 5px;
 }
 
 .card-inner {
