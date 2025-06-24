@@ -12,12 +12,25 @@
 </head>
 
 <body>
-    <div class="hero">
-        <h1>Fateometer</h1>
-        <p>Your fate destined by your chosen card.</p>
-    </div>
 
-    <div class="card-deck" id="cardDeck"></div>
+    <div class="snap-container">
+        <div class="hero">
+            <h1><span>Fate</span>ometer</h1>
+            <p>Your fate are destined by your <span>chosen card.</span></p>
+        </div>
+
+        <div class="deck-wrapper">
+
+            <div class="fate">
+                <div class="references">
+                    <img src="./assets/references/num6.svg">
+                    <p>Get a card with higher number than the number above <span>(50% chance of success).</span></p>
+                </div>
+
+                <div class="card-deck" id="cardDeck"></div>
+            </div>
+        </div>
+    </div>
 
     <script src="./js/core.js"></script>
 </body>

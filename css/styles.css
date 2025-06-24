@@ -5,16 +5,89 @@
     --black: #202020;
     --white: #fefefe;
     --semi-white: #f0f0f0;
+    --yellow: #ffb22c;
+    --yellowish: #CB9957;
 }
+
+* {
+    box-sizing: border-box;
+}
+
 
 html,
 body {
     margin: 0;
     padding: 0;
     background-color: var(--black);
+
+    overflow: hidden;
+    overflow-x: hidden;
+}
+
+.snap-container {
+    height: 100vh;
+    width: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.hero,
+.deck-wrapper {
+    scroll-snap-align: start;
+    height: 100vh;
+    width: 100%;
 }
 
 .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-family: "Junicode", sans-serif;
+    font-weight: 600;
+    font-size: 10rem;
+    color: var(--white);
+    
+    margin-top: -12vh;
+
+    text-align: center;
+}
+
+.hero span {
+    color: #CB9957;
+}
+
+.hero p {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--semi-white);
+
+    margin-top: -150px;
+    margin-bottom: 0;
+}
+
+.fate {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+.references {
     position: relative;
     width: 100%;
     display: flex;
@@ -24,25 +97,24 @@ body {
     gap: 0;
 }
 
-.hero h1 {
-    font-family: "Junicode", sans-serif;
-    font-weight: 600;
-    font-size: 10rem;
-    color: var(--white);
-    
-    text-align: center;
-
-    margin-bottom: 0;
+.references img {
+    width: 80vw;
+    align-items: center;
 }
 
-.hero p {
+.references p {
     font-family: "Bricolage Grotesque", sans-serif;
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--semi-white);
-    
-    margin-top: -35px;
-    margin-bottom: 100px;
+    text-align: center;
+
+    margin-top: -50px;
+    margin-bottom: 90px;
+}
+
+.references span {
+    color: var(--yellowish);
 }
 
 .card-deck {
@@ -53,6 +125,7 @@ body {
     align-items: center;
     gap: 0;
 
+    margin-top: -50px;
     margin-bottom: 100px;
 }
 
