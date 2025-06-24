@@ -30,18 +30,29 @@ function shuffle(array) {
     return array;
 }
 
-let shuffledDeck = shuffle([...originalDeck]);
+const shuffledDeck = shuffle([...originalDeck]);
 
-originalDeck.forEach(card => {
-    console.log(`Original number: ${card.number}, Path: ${card.value}`)
-})
+const deckContainer = document.getElementById('cardDeck');
 
-shuffledDeck.forEach(card => {
-  console.log(`Card number: ${card.number}, Path: ${card.value}`);
+shuffledDeck.forEach((card, index) => {
+  // Create card container
+  const cardDiv = document.createElement('div');
+  cardDiv.classList.add('card', `card${index}`);
+
+  // Build inner card HTML
+  cardDiv.innerHTML = `
+    <div class="card-inner">
+        <div class="value card-face card-back">
+            <img src="./assets/cards/${card.value}.svg">
+        </div>
+        <div class="cover card-face card-front">
+            <img src="./assets/cards/cover.svg">
+        </div>
+    </div>
+  `;
+
+  // Add card to the container
+  deckContainer.appendChild(cardDiv);
+
+  cardDiv.dataset.number = card.number;
 });
-
-// Select the .value img inside .card1
-const cardImg = document.querySelector('.card1 .value img');
-
-// Update the src based on the first object in shuffledDeck
-// cardImg.src = `./assets/cards/${shuffledDeck[0].value}.svg`;
