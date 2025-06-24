@@ -35,12 +35,12 @@ const shuffledDeck = shuffle([...originalDeck]);
 const deckContainer = document.getElementById('cardDeck');
 
 shuffledDeck.forEach((card, index) => {
-  // Create card container
-  const cardDiv = document.createElement('div');
-  cardDiv.classList.add('card', `card${index}`);
+    // Create card container
+    const cardDiv = document.createElement('div');
+    cardDiv.classList.add('card', `card${index}`);
 
-  // Build inner card HTML
-  cardDiv.innerHTML = `
+    // Build inner card HTML
+    cardDiv.innerHTML = `
     <div class="card-inner">
         <div class="value card-face card-back">
             <img src="./assets/cards/${card.value}.svg">
@@ -51,8 +51,36 @@ shuffledDeck.forEach((card, index) => {
     </div>
   `;
 
-  // Add card to the container
-  deckContainer.appendChild(cardDiv);
+    // Add card to the container
+    deckContainer.appendChild(cardDiv);
 
-  cardDiv.dataset.number = card.number;
+    // Get the data number from card
+    cardDiv.dataset.number = card.number;
+
+});
+
+let cardAlreadyFlipped = false;
+
+// Compare and detect click
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+        if (cardAlreadyFlipped) return; // block if one is already flipped
+
+        card.classList.add('flipped');
+        cardAlreadyFlipped = true;
+
+        // Get the card's value from dataset (it’s a string, convert to number)
+        const value = Number(card.dataset.number);
+        setTimeout(() => {
+            if (value > 6) {
+                window.alert('You win!');
+            } else {
+                window.alert('You lose!');
+    
+            }
+            window.location.reload();
+        }, 700); // wait 700ms
+
+        check();
+    });
 });
