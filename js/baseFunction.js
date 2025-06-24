@@ -39,9 +39,3 @@ originalDeck.forEach(card => {
 shuffledDeck.forEach(card => {
   console.log(`Card number: ${card.number}, Path: ${card.value}`);
 });
-
-// Select the .value img inside .card1
-const cardImg = document.querySelector('.card1 .value img');
-
-// Update the src based on the first object in shuffledDeck
-cardImg.src = `./assets/cards/${shuffledDeck[0].value}.svg`;
