@@ -75,10 +75,10 @@ function randomizedDeck() {
         cardDiv.innerHTML = `
     <div class="card-inner">
         <div class="value card-face card-back">
-            <img src="./assets/cards/${card.value}.svg">
+            <img src="./assets/cards/${card.value}.svg" draggable="false">
         </div>
         <div class="cover card-face card-front">
-            <img src="./assets/cards/cover.svg">
+            <img src="./assets/cards/cover.svg" draggable="false">
         </div>
     </div>
   `;
