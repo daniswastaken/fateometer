@@ -30,17 +30,25 @@ function shuffle(array) {
     return array;
 }
 
-const shuffledDeck = shuffle([...originalDeck]);
+let cardAlreadyFlipped = false;
+let interactionLocked = false;
+let drawCardAudio = new Audio('../assets/sounds/card_draw.mp3')
 
 const deckContainer = document.getElementById('cardDeck');
 
-shuffledDeck.forEach((card, index) => {
-    // Create card container
-    const cardDiv = document.createElement('div');
-    cardDiv.classList.add('card', `card${index}`);
+function randomizedDeck() {
 
-    // Build inner card HTML
-    cardDiv.innerHTML = `
+    const shuffledDeck = shuffle([...originalDeck]);
+    deckContainer.innerHTML = '';
+
+
+    shuffledDeck.forEach((card, index) => {
+        // Create card container
+        const cardDiv = document.createElement('div');
+        cardDiv.classList.add('card', `card${index}`);
+
+        // Build inner card HTML
+        cardDiv.innerHTML = `
     <div class="card-inner">
         <div class="value card-face card-back">
             <img src="./assets/cards/${card.value}.svg">
@@ -51,39 +59,38 @@ shuffledDeck.forEach((card, index) => {
     </div>
   `;
 
-    // Add card to the container
-    deckContainer.appendChild(cardDiv);
+        // Add card to the container
+        deckContainer.appendChild(cardDiv);
 
-    // Get the data number from card
-    cardDiv.dataset.number = card.number;
+        // Get the data number from card
+        cardDiv.dataset.number = card.number;
+        cardDiv.addEventListener('click', () => {
+            if (cardAlreadyFlipped || interactionLocked) return;
 
-});
+            interactionLocked = true;
 
-let cardAlreadyFlipped = false;
-let drawCardAudio = new Audio('../assets/sounds/card_draw.mp3')
+            cardDiv.classList.add('flipped');
+            cardAlreadyFlipped = true;
+            drawCardAudio.play();
 
-// Compare and detect click
-document.querySelectorAll('.card').forEach(card => {
+            const value = Number(cardDiv.dataset.number);
 
-    // Click function
-    card.addEventListener('click', () => {
-        if (cardAlreadyFlipped) return; // block if one is already flipped
+            setTimeout(() => {
+                alert(value > 6 ? 'You win!' : 'You lose!');
 
-        card.classList.add('flipped');
-        cardAlreadyFlipped = true;
-        drawCardAudio.play();
+                setTimeout(() => {
+                    cardDiv.classList.remove('flipped');
+                    drawCardAudio.play();
 
-        // Get the card's value from dataset (it’s a string, convert to number)
-        const value = Number(card.dataset.number);
-
-        setTimeout(() => {
-            if (value > 6) {
-                window.alert('You win!');
-            } else {
-                window.alert('You lose!');
-
-            }
-            window.location.reload();
-        }, 700); // wait 700ms
+                    setTimeout(() => {
+                        cardAlreadyFlipped = false;
+                        interactionLocked = false;
+                        randomizedDeck();
+                    }, 500);
+                }, 500);
+            }, 1000);
+        });
     });
-});
+}
+
+randomizedDeck();
