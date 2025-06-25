@@ -33,6 +33,8 @@ function shuffle(array) {
 let cardAlreadyFlipped = false;
 let interactionLocked = false;
 let drawCardAudio = new Audio('../assets/sounds/card_draw_shorter.mp3')
+let winAudio = new Audio('../assets/sounds/win_calm.mp3')
+let lostAudio = new Audio('../assets/sounds/lost.mp3')
 
 const deckContainer = document.getElementById('cardDeck');
 const deckWrapper = document.getElementById('deckWrapper');
@@ -81,10 +83,12 @@ function randomizedDeck() {
                 if (value > 6) {
                     console.log('Win');
                     deckWrapper.classList.add('win');
+                    winAudio.play();
                 }
                 else {
                     console.log('Lost');
                     deckWrapper.classList.add('lost');
+                    lostAudio.play();
                 }
 
                 setTimeout(() => {
@@ -98,8 +102,8 @@ function randomizedDeck() {
                         interactionLocked = false;
                         randomizedDeck();
                     }, 500);
-                }, 900);
-            }, 1000);
+                }, 1200);
+            }, 500);
         });
     });
 }
