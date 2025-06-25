@@ -39,6 +39,27 @@ let lostAudio = new Audio('../assets/sounds/lost.mp3')
 const deckContainer = document.getElementById('cardDeck');
 const deckWrapper = document.getElementById('deckWrapper');
 
+function jump() {
+    return new Promise((resolve) => {
+        const cards = document.querySelectorAll('.card');
+        const delayPerCard = 100;
+        const jumpDuration = 500;
+        const totalDelay = (cards.length - 1) * delayPerCard + jumpDuration;
+
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('jump');
+                setTimeout(() => {
+                    card.classList.remove('jump');
+                }, jumpDuration);
+            }, index * delayPerCard);
+        });
+
+        // Resolve after all jump animations complete
+        setTimeout(resolve, totalDelay);
+    });
+}
+
 function randomizedDeck() {
 
     const shuffledDeck = shuffle([...originalDeck]);
@@ -93,15 +114,16 @@ function randomizedDeck() {
 
                 setTimeout(() => {
                     cardDiv.classList.remove('flipped');
-                    deckWrapper.classList.remove('win');
-                    deckWrapper.classList.remove('lost');
+                    deckWrapper.classList.remove('win', 'lost');
                     drawCardAudio.play();
 
-                    setTimeout(() => {
+                    setTimeout(async () => {
+                        await jump();
+
+                        randomizedDeck();
                         cardAlreadyFlipped = false;
                         interactionLocked = false;
-                        randomizedDeck();
-                    }, 500);
+                    }, 800);
                 }, 1200);
             }, 500);
         });
