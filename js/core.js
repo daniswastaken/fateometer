@@ -35,6 +35,7 @@ let interactionLocked = false;
 let drawCardAudio = new Audio('../assets/sounds/card_draw_shorter.mp3')
 
 const deckContainer = document.getElementById('cardDeck');
+const deckWrapper = document.getElementById('deckWrapper');
 
 function randomizedDeck() {
 
@@ -79,13 +80,17 @@ function randomizedDeck() {
                 // alert(value > 6 ? 'You win!' : 'You lose!');
                 if (value > 6) {
                     console.log('Win');
+                    deckWrapper.classList.add('win');
                 }
                 else {
                     console.log('Lost');
+                    deckWrapper.classList.add('lost');
                 }
 
                 setTimeout(() => {
                     cardDiv.classList.remove('flipped');
+                    deckWrapper.classList.remove('win');
+                    deckWrapper.classList.remove('lost');
                     drawCardAudio.play();
 
                     setTimeout(() => {

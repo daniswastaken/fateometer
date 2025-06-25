@@ -10,6 +10,8 @@
     --yellowish: #cb9957;
     --position: 50%;
     --seconds: 80s;
+    --red: #EA2F14;
+    --gold: #FFB22C;
 }
 
 @keyframes spin {
@@ -239,11 +241,35 @@ body {
     transform: rotateY(180deg);
 }
 
-.card-deck.no-hover .card:hover {
-    transform: none !important;
+@keyframes win {
+    0% {
+        box-shadow: inset 0 0 0px var(--gold)
+    }
+    40% {
+        box-shadow: inset 0 0 100px var(--gold)
+    }
+    80% {
+        box-shadow: inset 0 0 0px var(--gold)
+    }
 }
 
-.card-deck.no-hover .card:hover .card-inner {
-    transform: none !important;
+@keyframes lost {
+    0% {
+        box-shadow: inset 0 0 0px var(--red)
+    }
+    40% {
+        box-shadow: inset 0 0 120px var(--red)
+    }
+    80% {
+        box-shadow: inset 0 0 0px var(--red)
+    }
 }
 
+
+.deck-wrapper.win {
+    animation: win 1s ease-in-out;
+}
+
+.deck-wrapper.lost {
+    animation: lost 1s ease-in-out;
+}
