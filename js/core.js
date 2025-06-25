@@ -60,17 +60,22 @@ shuffledDeck.forEach((card, index) => {
 });
 
 let cardAlreadyFlipped = false;
+let drawCardAudio = new Audio('../assets/sounds/card_draw.mp3')
 
 // Compare and detect click
 document.querySelectorAll('.card').forEach(card => {
+
+    // Click function
     card.addEventListener('click', () => {
         if (cardAlreadyFlipped) return; // block if one is already flipped
 
         card.classList.add('flipped');
         cardAlreadyFlipped = true;
+        drawCardAudio.play();
 
         // Get the card's value from dataset (it’s a string, convert to number)
         const value = Number(card.dataset.number);
+        
         setTimeout(() => {
             if (value > 6) {
                 window.alert('You win!');
