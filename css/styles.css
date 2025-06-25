@@ -154,7 +154,7 @@ body {
     text-align: center;
 
     margin-top: -50px;
-    margin-bottom: 90px;
+    margin-bottom: 80px;
 }
 
 .references span {
@@ -169,7 +169,7 @@ body {
     align-items: center;
     gap: 0;
 
-    margin-top: -50px;
+    margin-top: -45px;
     margin-bottom: 100px;
 }
 
@@ -209,7 +209,7 @@ body {
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    transition: transform 0.6s;
+    transition: transform 0.5s;
 }
 
 /* unused, moved to JS by clicks
@@ -238,3 +238,12 @@ body {
 .card-back {
     transform: rotateY(180deg);
 }
+
+.card-deck.no-hover .card:hover {
+    transform: none !important;
+}
+
+.card-deck.no-hover .card:hover .card-inner {
+    transform: none !important;
+}
+

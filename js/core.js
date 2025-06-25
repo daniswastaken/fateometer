@@ -32,7 +32,7 @@ function shuffle(array) {
 
 let cardAlreadyFlipped = false;
 let interactionLocked = false;
-let drawCardAudio = new Audio('../assets/sounds/card_draw.mp3')
+let drawCardAudio = new Audio('../assets/sounds/card_draw_shorter.mp3')
 
 const deckContainer = document.getElementById('cardDeck');
 
@@ -76,7 +76,13 @@ function randomizedDeck() {
             const value = Number(cardDiv.dataset.number);
 
             setTimeout(() => {
-                alert(value > 6 ? 'You win!' : 'You lose!');
+                // alert(value > 6 ? 'You win!' : 'You lose!');
+                if (value > 6) {
+                    console.log('Win');
+                }
+                else {
+                    console.log('Lost');
+                }
 
                 setTimeout(() => {
                     cardDiv.classList.remove('flipped');
@@ -87,7 +93,7 @@ function randomizedDeck() {
                         interactionLocked = false;
                         randomizedDeck();
                     }, 500);
-                }, 500);
+                }, 900);
             }, 1000);
         });
     });
