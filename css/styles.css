@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
 
 :root {
-    --purple: #31313E;
+    --purple: #31313e;
     --black: #202020;
     --white: #fefefe;
     --semi-white: #f0f0f0;
@@ -41,6 +41,14 @@ body {
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
+
+    /* 🔥 These lines hide the scrollbar visually */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+.snap-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .hero,
