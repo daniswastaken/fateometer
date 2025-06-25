@@ -75,17 +75,15 @@ document.querySelectorAll('.card').forEach(card => {
 
         // Get the card's value from dataset (it’s a string, convert to number)
         const value = Number(card.dataset.number);
-        
+
         setTimeout(() => {
             if (value > 6) {
                 window.alert('You win!');
             } else {
                 window.alert('You lose!');
-    
+
             }
             window.location.reload();
         }, 700); // wait 700ms
-
-        check();
     });
 });
