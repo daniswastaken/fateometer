@@ -32,9 +32,9 @@ function shuffle(array) {
 
 let cardAlreadyFlipped = false;
 let interactionLocked = false;
-let drawCardAudio = new Audio('../assets/sounds/card_draw_shorter.mp3')
-let winAudio = new Audio('../assets/sounds/win_calm.mp3')
-let lostAudio = new Audio('../assets/sounds/lost.mp3')
+let drawCardAudio = new Audio('assets/sounds/card_draw_shorter.mp3')
+let winAudio = new Audio('assets/sounds/win_calm.mp3')
+let lostAudio = new Audio('assets/sounds/lost.mp3')
 
 const deckContainer = document.getElementById('cardDeck');
 const deckWrapper = document.getElementById('deckWrapper');
