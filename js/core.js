@@ -130,4 +130,17 @@ function randomizedDeck() {
     });
 }
 
-randomizedDeck();
+const isMobile = window.innerWidth <= 1024;
+
+const fateSection = document.getElementById('fate');
+const icon_background = document.getElementById('icon_background')
+const sub = document.getElementById('subtext');
+
+function onMobile() {
+    icon_background.remove();
+    deckWrapper.remove();
+    sub.innerHTML = 'Sorry, but you need a device with <span>bigger screen</span> to use this website.';
+}
+
+isMobile ? onMobile() : randomizedDeck();
+

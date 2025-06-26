@@ -301,3 +301,29 @@ body {
 .jump {
     animation: jumpAnim 0.5s ease;
 }
+
+@media screen and (max-width: 1024px) {
+    .hero h1 {
+        z-index: 1;
+        font-family: "Junicode", sans-serif;
+        font-weight: 700;
+        font-size: 5rem;
+        color: var(--white);
+
+        margin-top: -10vh;
+
+        text-align: center;
+    }
+
+    .hero p {
+        z-index: 1;
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-weight: 500;
+        font-size: 1rem;
+        color: var(--semi-white);
+
+        margin-top: -60px;
+
+        max-width: 80vw;
+    }
+}

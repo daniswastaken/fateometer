@@ -16,16 +16,16 @@
     <div class="snap-container">
         <div class="hero">
             <div class="icon">
-                <img src="./assets/icons/transparent_icon.svg">
+                <img src="./assets/icons/transparent_icon.svg" id="icon_background">
             </div>
 
             <h1><span>Fate</span>ometer</h1>
-            <p>Your fate are destined by your <span>chosen card.</span></p>
+            <p id="subtext">Your fate are destined by your <span>chosen card.</span></p>
         </div>
 
         <div class="deck-wrapper" id="deckWrapper">
 
-            <div class="fate">
+            <div class="fate" id="fate">
                 <div class="references">
                     <img src="./assets/references/num6.svg" draggable="false">
                     <p>Get a card with higher number than the number above <span>(50% chance of success).</span></p>
@@ -33,6 +33,7 @@
 
                 <div class="card-deck" id="cardDeck"></div>
             </div>
+
         </div>
     </div>
 
